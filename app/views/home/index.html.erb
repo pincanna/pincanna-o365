@@ -4,6 +4,25 @@
 <% else %>
   <h4>Hello, <%= @profile["givenName"] %>!</h4>
   <p><em>Your primary (login) address is: <%= @profile["userPrincipalName"] %></em></p>
+  <% if !current_user.data_migration %>
+    <div>
+      <hr />
+      <strong>You have not yet requested a data migration.</strong> <br />
+      <a href="#" class="btn btn-primary btn-sm">Request Migration</a>
+      <%= link_to 'Request Migration', data_migration_create_path, class: 'btn btn-primary btn-sm' %>
+      <hr />
+    </div>
+  <% else %>
+    <div>
+      <hr />
+      <% if current_user.data_migration.completed %>
+        <strong>Your data has been migrated. Welcome to Office365!</strong>
+      <% else %>
+        <strong>Your data migration is in progress.</strong>
+      <% end %>
+      <hr />
+    </div>
+  <% end %>
   <h5>Your account aliases:</h5>
   <ul>
     <% @profile["proxyAddresses"].each do |address| %>
