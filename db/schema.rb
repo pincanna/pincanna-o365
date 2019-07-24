@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_24_223311) do
+ActiveRecord::Schema.define(version: 2019_07_24_225050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 2019_07_24_223311) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "new_gsuite_password"
+    t.boolean "routed_to_o365", default: false
+    t.boolean "in_progress", default: false
     t.index ["user_id"], name: "index_data_migrations_on_user_id"
   end
 

@@ -14,6 +14,8 @@ class DataMigrationDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     new_gsuite_password: Field::String,
+    routed_to_o365: Field::Boolean,
+    in_progress: Field::Boolean
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -33,6 +35,7 @@ class DataMigrationDashboard < Administrate::BaseDashboard
     :user,
     :completed,
     :new_gsuite_password,
+    :in_progress,
     :created_at,
     :updated_at,
   ].freeze
@@ -43,6 +46,7 @@ class DataMigrationDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = [
     :completed,
     :new_gsuite_password,
+    :in_progress,
   ].freeze
 
   # Overwrite this method to customize how data migrations are displayed

@@ -15,13 +15,18 @@
   <% else %>
     <div class="alert alert-warning">
       <% if current_user.data_migration.completed %>
+       
         <strong>Your data has been migrated. Welcome to Office365!</strong>
         <% if current_user.data_migration.new_gsuite_password %>
           <p>Your new GSuite password is <%= current_user.data_migration.new_gsuite_password %></p>
         <% end %>
 
       <% else %>
-        <strong>Your data migration is in progress.</strong>
+        <% if current_user.data_migration.in_progress %>
+          <strong>Your data migration is in progress.</strong>
+        <% else %>
+          <strong>Pending data migration.</strong>
+          <% end %>
         <p>You will lose access to your GSuite account during this process.<br/>When the migration is complete, return to this page for your new GSuite password.</p>
       <% end %>
     </div>
