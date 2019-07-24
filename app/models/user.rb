@@ -25,7 +25,8 @@ class User < ApplicationRecord
   end
 
   def profile
-    self.class.get("/me?$select=proxyAddresses,accountEnabled,createdDateTime,givenName,surname,id,mail,userPrincipalName", client_options)
+    request = self.class.get("/me?$select=proxyAddresses,accountEnabled,createdDateTime,givenName,surname,id,mail,userPrincipalName", client_options)
+    JSON.parse(request.body)
   end
 
 

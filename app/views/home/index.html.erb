@@ -1,2 +1,14 @@
-<h1>Welcome to Jumpstart!</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<h1>Welcome to Pincanna!</h1>
+<% if !current_user %>
+  <p>Please sign in with your Pincanna Office365 account.</p>
+<% else %>
+  <h4>Hello, <%= @profile["givenName"] %>!</h4>
+  <p><em>Your primary (login) address is: <%= @profile["userPrincipalName"] %></em></p>
+  <h5>Your account aliases:</h5>
+  <ul>
+    <% @profile["proxyAddresses"].each do |address| %>
+      <li><%= address.split(':').join(' -> ') %></li>
+    <% end %>
+  </ul>
+<% end %>
+
