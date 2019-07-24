@@ -13,6 +13,7 @@ class DataMigrationDashboard < Administrate::BaseDashboard
     completed: Field::Boolean,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    new_gsuite_password: Field::String,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -22,7 +23,6 @@ class DataMigrationDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :user,
-    :id,
     :completed,
     :created_at,
   ].freeze
@@ -31,8 +31,8 @@ class DataMigrationDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
     :user,
-    :id,
     :completed,
+    :new_gsuite_password,
     :created_at,
     :updated_at,
   ].freeze
@@ -41,8 +41,8 @@ class DataMigrationDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
-    :user,
     :completed,
+    :new_gsuite_password,
   ].freeze
 
   # Overwrite this method to customize how data migrations are displayed
