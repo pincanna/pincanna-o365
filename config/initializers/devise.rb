@@ -275,6 +275,7 @@ Devise.setup do |config|
       client_secret: Rails.application.credentials[:office][:secret],
       tenant_id: Rails.application.credentials[:office][:tenant_id],
       resource: 'https://graph.microsoft.com',
+      grant_type: 'authorization_code'
     }
 
 

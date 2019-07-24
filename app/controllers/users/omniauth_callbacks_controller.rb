@@ -28,6 +28,8 @@ module Users
     private
 
     def handle_auth(kind)
+      puts "LOGLOGLOG:"
+      puts auth
       if service.present?
         service.update(service_attrs)
       else
@@ -74,6 +76,7 @@ module Users
           expires_at: expires_at,
           access_token: auth.credentials.token,
           access_token_secret: auth.credentials.secret,
+          refresh_token: auth.credentials.refresh_token
       }
     end
 
