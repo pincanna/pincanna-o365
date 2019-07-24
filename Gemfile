@@ -71,3 +71,9 @@ gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', require: false
 gem 'webpacker', '~> 4.0.1'
+gem 'omniauth-microsoft-office365', '~> 0.0.8'
+gem 'omniauth-azure-oauth2'
+gem 'microsoft_graph'
+gem 'httparty'
+gem 'omniauth-azure-activedirectory'
+

@@ -261,12 +261,23 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
-    %i{ facebook twitter github }.each do |provider|
-      if options = env_creds[provider]
-        config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
-      end
-    end
+  #env_creds = Rails.application.credentials[Rails.env.to_sym] || {}
+    #%i{ facebook twitter github }.each do |provider|
+      #if options = env_creds[provider]
+        #config.omniauth provider, options[:app_id], options[:app_secret], options.fetch(:options, {})
+      #end
+    #end
+
+
+  config.omniauth :azure_oauth2,
+    {
+      client_id: Rails.application.credentials[:office][:client_id],
+      client_secret: Rails.application.credentials[:office][:secret],
+      tenant_id: Rails.application.credentials[:office][:tenant_id],
+      resource: 'https://graph.microsoft.com',
+    }
+
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
