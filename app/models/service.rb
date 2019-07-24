@@ -19,18 +19,8 @@ class Service < ApplicationRecord
   end
 
 
-  def twitter_client
-    Twitter::REST::Client.new do |config|
-      config.consumer_key        = Rails.application.secrets.twitter_app_id
-      config.consumer_secret     = Rails.application.secrets.twitter_app_secret
-      config.access_token        = access_token
-      config.access_token_secret = access_token_secret
-    end
-  end
-
-  def twitter_refresh_token!(token); end
   def azure_oauth2_refresh_token!(token)
-    srv = Service.find_by(access_token: token).refresh_token
+    srv = Service.find_by(access_token: token)
     refresh_token = srv.refresh_token
     req = HTTParty.post('https://login.microsoftonline.com/58c337da-d148-4281-ab03-0e91bff6825e/oauth2/v2.0/token', {
       body: {
