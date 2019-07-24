@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :announcements
       resources :notifications
       resources :services
+      resources :data_migrations
 
       root to: "users#index"
     end
