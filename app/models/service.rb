@@ -29,4 +29,5 @@ class Service < ApplicationRecord
   end
 
   def twitter_refresh_token!(token); end
+  def azure_oauth2_refresh_token!(token); end
 end

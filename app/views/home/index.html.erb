@@ -3,7 +3,7 @@
   <p>Please sign in with your Pincanna Office365 account.</p>
 <% else %>
   <h4>Hello, <%= @profile["givenName"] %>!</h4>
-  <p><em>Your primary (login) address is: <%= @profile["userPrincipalName"] %></em></p>
+  <p><em>Your primary (login) address is: <u><%= @profile["userPrincipalName"] %></u></em></p>
   <% if !current_user.data_migration %>
     <div>
       <hr />
@@ -12,14 +12,13 @@
       <hr />
     </div>
   <% else %>
-    <div>
-      <hr />
+    <div class="alert alert-warning">
       <% if current_user.data_migration.completed %>
         <strong>Your data has been migrated. Welcome to Office365!</strong>
       <% else %>
         <strong>Your data migration is in progress.</strong>
+        <p>You will lose access to your GSuite account during this process.<br/>When the migration is complete, return to this page for your new GSuite password.</p>
       <% end %>
-      <hr />
     </div>
   <% end %>
   <h5>Your account aliases:</h5>
